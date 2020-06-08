@@ -8,6 +8,13 @@ import javaboard.GridGame;
 import javaboard.Movement;
 import javaboard.Piece;
 
+/*
+FoxAndHounds is a game where player 0, that controls a Fox, tries to reach
+the other side of the board; while player 1, that controls 4 hounds, tries
+to stop him.
+The fox can move diagonally forward and backwards, the hounds can only move forward.
+There is no eating.
+*/
 public class FoxAndHounds extends GridGame {
 
     public FoxAndHounds(){
@@ -23,13 +30,16 @@ public class FoxAndHounds extends GridGame {
 
     @Override
     public Integer currentWinner(List<Movement> current_player_moves){
+        // If the fox reaches the top side of the board, player 0 wins
         for(Piece pc : pieces){
             if(pc.player==0 && pc.y==0) return 0;
         }
+        // Test default win condition
         Integer result = super.currentWinner(current_player_moves);
         return result;
     }
 
+    // Clone the FoxAndHounds so that the clone is a FoxAndHounds instance
     @Override
     public Game cloneGame(){
         GridGame clone = new FoxAndHounds();

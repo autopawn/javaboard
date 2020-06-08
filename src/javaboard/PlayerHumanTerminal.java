@@ -3,6 +3,7 @@ package javaboard;
 import java.util.List;
 import java.util.Scanner;
 
+// A human player that picks movements from the terminal using their command strings
 public class PlayerHumanTerminal extends Player {
 
     @SuppressWarnings("resource")
@@ -29,8 +30,10 @@ public class PlayerHumanTerminal extends Player {
                     input_move = mov;
                 }
             }
+            // Valid command, break
             if(input_move != null) break;
 
+            // Try again
             System.out.println("> Invalid move!");
         }
 

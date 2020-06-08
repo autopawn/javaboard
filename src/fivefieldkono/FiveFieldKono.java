@@ -8,9 +8,16 @@ import javaboard.GridGame;
 import javaboard.Movement;
 import javaboard.Piece;
 
+/*
+The players take turns moving one of their pieces one square diagonally.
+The first player to move all of their pieces to their opponent's starting positions wins.
+*/
+
 public class FiveFieldKono extends GridGame {
 
+    // Starting positions of player 0
     public static int[][] base0 = {{0,3},{0,4},{1,4},{2,4},{3,4},{4,4},{4,3}};
+    // Starting positions of player 1
     public static int[][] base1 = {{0,1},{0,0},{1,0},{2,0},{3,0},{4,0},{4,1}};
 
     public FiveFieldKono(){
@@ -18,9 +25,11 @@ public class FiveFieldKono extends GridGame {
         size_y = 5;
         pieces = new LinkedList<Piece>();
 
+        // Create a player 0 piece on player 0 starting positions
         for(int[] ps : base0){
             pieces.add(new KonoPiece(0,ps[0],ps[1]));
         }
+        // Create a player 1 piece on player 1 starting positions
         for(int[] ps : base1){
             pieces.add(new KonoPiece(1,ps[0],ps[1]));
         }
@@ -55,10 +64,12 @@ public class FiveFieldKono extends GridGame {
             if(covered1==7) return 0;
         }
 
+        // Check default winning condition
         Integer result = super.currentWinner(current_player_moves);
         return result;
     }
 
+    // Clone the FiveFieldKono so that the clone is a FiveFieldKono instance
     @Override
     public Game cloneGame(){
         GridGame clone = new FiveFieldKono();
@@ -72,9 +83,12 @@ public class FiveFieldKono extends GridGame {
         return clone;
     }
 
+    // Overriden toString method to draw the board in another way
     @Override
     public String toString(){
         StringBuilder sbu = new StringBuilder();
+
+        // First row with letters
         sbu.append("\n");
         sbu.append("   ");
         for(int x=0;x<size_x;x++){
@@ -83,11 +97,14 @@ public class FiveFieldKono extends GridGame {
         }
         sbu.append("\n");
 
+        // Other parts of the board
         for(int y=0;y<size_y;y++){
+            // Number label
             String ylabel = ""+y;
             if(ylabel.length()<2) sbu.append(" ");
             sbu.append(ylabel+" ");
 
+            // Each cell
             for(int x=0;x<size_x;x++){
                 Piece pc_in_cell = pieceAt(x,y);
                 if(pc_in_cell!=null){
@@ -95,7 +112,7 @@ public class FiveFieldKono extends GridGame {
                     String repr = pc_in_cell.asciiRepresentation();
                     sbu.append(repr);
                 }else{
-                    // Draw cell
+                    // Draw cell if its a starting point, otherwise draw blank
                     int symbol = -1;
                     for(int[] ps : base0){
                         if(x==ps[0] && y==ps[1]) symbol=0;

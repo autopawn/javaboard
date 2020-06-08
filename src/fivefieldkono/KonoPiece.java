@@ -15,13 +15,14 @@ public class KonoPiece extends Piece {
 
     @Override
     public List<Movement> getMovements(Game state){
+        // Implicit cast state to use GridGame methods
         GridGame grid = (GridGame) state;
         // Movement list
         List<Movement> moves = new LinkedList<Movement>();
         // Player 0 moves on -Y and player 1 on +Y
-        int[] dys = {-1,1};
+        int[] dys = {-1,1}; // 2 alternatives for delta y
         for(int dy : dys){
-            int[] dxs = {-1,1};
+            int[] dxs = {-1,1}; // 2 alternatives for delta x
             for(int dx : dxs){
                 int xx = x + dx;
                 int yy = y + dy;
@@ -37,6 +38,7 @@ public class KonoPiece extends Piece {
         return moves;
     }
 
+    // Draw cute UTF-8 characters for the KonoPiece
     @Override
     public String asciiRepresentation(){
         if(player==0){

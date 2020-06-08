@@ -11,26 +11,31 @@ import javaboard.Piece;
 public class Fox extends Piece {
 
     public Fox(int player, int x, int y){
-        super(player,x,y);
+        super(player,x,y); // Call parent constructor
     }
 
+    // A Fox can move diagonally forward and backwards
     @Override
     public List<Movement> getMovements(Game state){
+        // Implicit cast state to use GridGame methods
         GridGame grid = (GridGame) state;
+
         // Movement list
         List<Movement> moves = new LinkedList<Movement>();
-        // Player 0 moves on -Y and player 1 on +Y
-        int[] dys = {-1,1};
+
+        int[] dys = {-1,1};     // 2 alternatives for delta y
         for(int dy : dys){
-            int[] dxs = {-1,1};
+            int[] dxs = {-1,1}; // 2 alternatives for delta x
             for(int dx : dxs){
                 int xx = x + dx;
                 int yy = y + dy;
                 // Check inside bounds and that there is not piece
                 if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy)==null){
+                    // Clone the current state to use it in the movement
                     Game cpy = grid.cloneGame();
-                    cpy.current_player = 1 - cpy.current_player;
-                    cpy.movePiece(x,y,xx,yy);
+                    cpy.movePiece(x,y,xx,yy);                    // new state moves this piece
+                    cpy.current_player = 1 - cpy.current_player; // new state changes player
+                    // Append new movement to the movement list
                     moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
                 }
             }
@@ -43,6 +48,7 @@ public class Fox extends Piece {
         return "🄵 ";
     }
 
+    // Clone the Fox so that the clone is a Fox instance
     @Override
     public Piece clonePiece(){
         Fox other = new Fox(player,x,y);

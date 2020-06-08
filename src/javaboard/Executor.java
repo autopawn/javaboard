@@ -4,10 +4,12 @@ import java.util.List;
 
 public class Executor {
 
+    // Runs a game from the given initial state with the given players.
     public int runGame(Game init, Player[] players){
 
         Game state = init;
 
+        // The current winner, we use null when there is no winner yet
         Integer winner = null;
 
         while(true){
@@ -28,6 +30,7 @@ public class Executor {
             state = pick.result;
         }
 
+        // Print player's victory message
         System.out.println("Jugador "+winner+": "+players[winner].victoryMessage());
 
         return winner;
