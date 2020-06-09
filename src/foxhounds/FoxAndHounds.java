@@ -3,6 +3,7 @@ package foxhounds;
 import java.util.LinkedList;
 import java.util.List;
 
+import javaboard.Evaluable;
 import javaboard.Game;
 import javaboard.GridGame;
 import javaboard.Movement;
@@ -15,7 +16,7 @@ to stop him.
 The fox can move diagonally forward and backwards, the hounds can only move forward.
 There is no eating.
 */
-public class FoxAndHounds extends GridGame {
+public class FoxAndHounds extends GridGame implements Evaluable {
 
     public FoxAndHounds(){
         size_x = 8;
@@ -52,4 +53,34 @@ public class FoxAndHounds extends GridGame {
         clone.size_y = size_y;
         return clone;
     }
+
+    // Default evaluation function, so that PlayerCPUEval works for FoxAndHounds
+    @Override
+    public float defaultEvaluationFunction(){
+        // How good is the state for the fox:
+        float eval = 0;
+        // Get the fox and how near it is to the other side of the board
+        Piece fox = null;
+        for(Piece pc : pieces){
+            if(pc.player==0) fox = pc;
+        }
+        eval += 7-fox.y;
+        // Hound position
+        for(Piece pc : pieces){
+            if(pc.player==1){
+                if(pc.y >= fox.y){
+                    // It is very good for the fox if is has passed by the hounds
+                    eval += 0.5;
+                }else{
+                    // It is better for the fox if the hounds are far in x
+                    eval += 0.05*Math.abs(pc.x-fox.x);
+                }
+            }
+        }
+        // Negate eval if the current player is not the fox
+        if(current_player!=0) eval = -eval;
+        // Return eval
+        return eval;
+    }
+
 }
