@@ -8,7 +8,7 @@ public class PlayerHumanTerminal extends Player {
 
     @SuppressWarnings("resource")
     @Override
-    public Movement pickMovement(List<Movement> options, List<String> input_commands){
+    public Movement pickMovement(Game state, List<Movement> options, List<String> input_commands){
         assert(options.size()>0);
 
         // Print available moves

@@ -21,7 +21,7 @@ public class PlayerCPURandom extends Player {
 
     // Pick a movement at random
     @Override
-    public Movement pickMovement(List<Movement> options, List<String> input_commands){
+    public Movement pickMovement(Game state, List<Movement> options, List<String> input_commands){
         assert(options.size()>0);
         int p = rand.nextInt(options.size());
         return options.get(p);

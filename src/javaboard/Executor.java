@@ -24,7 +24,7 @@ public class Executor {
             if(winner != null) break;
 
             // Current player decides
-            Movement pick = players[state.current_player].pickMovement(moves,null);
+            Movement pick = players[state.current_player].pickMovement(state,moves,null);
 
             // Update current state
             state = pick.result;

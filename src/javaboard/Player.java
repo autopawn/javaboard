@@ -7,7 +7,7 @@ generally trying to win the game. */
 public abstract class Player {
 
     // From a list of options pick one
-    public abstract Movement pickMovement(List<Movement> options, List<String> input_commands);
+    public abstract Movement pickMovement(Game state, List<Movement> options, List<String> input_commands);
 
     // String to be retrieved when this player archieves victory
     public abstract String victoryMessage();
