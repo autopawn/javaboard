@@ -32,9 +32,14 @@ public class Peon1 extends Piece {
                 int xx = x + dx;
                 int yy = y + dy;
                 // Check inside bounds and that there is not piece
-                if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy)==null){
+                if(grid.isInside(xx,yy) ){
                     // Clone the current state to use it in the movement
                     Game cpy = grid.cloneGame();
+                    if(cpy.pieceAt(xx,yy) != null){
+                        cpy.pieceAt(xx,yy).player=4; // Change piece player, no one has control of it 
+                        cpy.movePiece(xx,yy,8,7); // moves to captured zone
+                        
+                    }
                     cpy.movePiece(x,y,xx,yy);                    // new state moves this piece
                     cpy.current_player = 1 - cpy.current_player; // new state changes player
                     // Append new movement to the movement list

@@ -33,6 +33,18 @@ public class King1  extends Piece {
                 int xx = x + dx;
                 int yy = y + dy;
                 // Check inside bounds and that there is not piece
+            if(grid.pieceAt(xx,yy)!=null && grid.pieceAt(xx,yy).player == grid.current_player){
+                break;
+            }
+            if(grid.pieceAt(xx,yy)!=null && grid.pieceAt(xx,yy).player != grid.current_player){
+                Game cpy = grid.cloneGame();
+                cpy.pieceAt(xx,yy).player=cpy.current_player+2; // Change piece player, no one has control of it 
+                cpy.movePiece(xx,yy,8,7); // moves to captured zone  
+                cpy.movePiece(x,y,xx,yy);           
+                cpy.current_player = 1 - cpy.current_player;                 
+                moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
+                break;
+            }                
                 if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy)==null){
                     // Clone the current state to use it in the movement
                     Game cpy = grid.cloneGame();
