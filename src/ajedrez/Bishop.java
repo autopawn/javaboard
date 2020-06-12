@@ -10,9 +10,9 @@ import javaboard.GridGame;
 import javaboard.Movement;
 import javaboard.Piece;
 
-public class Bishop1  extends Piece {
+public class Bishop extends Piece {
 
-    public Bishop1 (int player, int x, int y){
+    public Bishop (int player, int x, int y){
         super(player,x,y); // Call parent constructor
     }
 
@@ -137,18 +137,26 @@ public class Bishop1  extends Piece {
             }   
         }
 
+
         return moves;
     }
 
     @Override
     public String asciiRepresentation(){
-        return "♝ ";
-    }
+        if(player==0 || player==2){
+            return "♗ ";
+        }
+        if(player==1 || player ==3){
+            return "♝ ";
+        }
+        return "??";
+    }        
+        
 
     // Clone the Fox so that the clone is a Fox instance
     @Override
     public Piece clonePiece(){
-     Bishop1  other = new Bishop1 (player,x,y);
+     Bishop  other = new Bishop (player,x,y);
         return other;
     }
 }

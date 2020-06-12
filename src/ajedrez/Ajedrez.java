@@ -28,48 +28,48 @@ public class Ajedrez extends GridGame  {
         size_y = 8;
         pieces = new LinkedList<Piece>();
         
-        pieces.add(new Peon0(0,0,6));
-        pieces.add(new Peon0(0,1,6));
-        pieces.add(new Peon0(0,2,6));
-        pieces.add(new Peon0(0,3,6));
-        pieces.add(new Peon0(0,4,6));
-        pieces.add(new Peon0(0,5,6));
-        pieces.add(new Peon0(0,6,6));
-        pieces.add(new Peon0(0,7,6));
+        pieces.add(new Pawn(0,0,6));
+        pieces.add(new Pawn(0,1,6));
+        pieces.add(new Pawn(0,2,6));
+        pieces.add(new Pawn(0,3,6));
+        pieces.add(new Pawn(0,4,6));
+        pieces.add(new Pawn(0,5,6));
+        pieces.add(new Pawn(0,6,6));
+        pieces.add(new Pawn(0,7,6));
 
-        pieces.add(new Rook0(0,0,7));
-        pieces.add(new Rook0(0,7,7));
+        pieces.add(new Rook(0,0,7));
+        pieces.add(new Rook(0,7,7));
 
-        pieces.add(new Knight0(0,1,7));
-        pieces.add(new Knight0(0,6,7));
+        pieces.add(new Knight(0,1,7));
+        pieces.add(new Knight(0,6,7));
 
-        pieces.add(new Bishop0(0,2,7));
-        pieces.add(new Bishop0(0,5,7)); 
+        pieces.add(new Bishop(0,2,7));
+        pieces.add(new Bishop(0,5,7)); 
 
-        pieces.add(new Queen0(0,3,7));
-        pieces.add(new King0(0,4,7));
+        pieces.add(new Queen(0,3,7));
+        pieces.add(new King(0,4,7));
 
 
-        pieces.add(new Peon1(1,0,1));
-        pieces.add(new Peon1(1,1,1));
-        pieces.add(new Peon1(1,2,1));
-        pieces.add(new Peon1(1,3,1));
-        pieces.add(new Peon1(1,4,1));
-        pieces.add(new Peon1(1,5,1));
-        pieces.add(new Peon1(1,6,1));
-        pieces.add(new Peon1(1,7,1));
+        pieces.add(new Pawn(1,0,1));
+        pieces.add(new Pawn(1,1,1));
+        pieces.add(new Pawn(1,2,1));
+        pieces.add(new Pawn(1,3,1));
+        pieces.add(new Pawn(1,4,1));
+        pieces.add(new Pawn(1,5,1));
+        pieces.add(new Pawn(1,6,1));
+        pieces.add(new Pawn(1,7,1));
 
-        pieces.add(new Rook1(1,0,0));
-        pieces.add(new Rook1(1,7,0));
+        pieces.add(new Rook(1,0,0));
+        pieces.add(new Rook(1,7,0));
 
-        pieces.add(new Knight1(1,1,0));
-        pieces.add(new Knight1(1,6,0)); 
+        pieces.add(new Knight(1,1,0));
+        pieces.add(new Knight(1,6,0)); 
 
-        pieces.add(new Bishop1(1,2,0));
-        pieces.add(new Bishop1(1,5,0)); 
+        pieces.add(new Bishop(1,2,0));
+        pieces.add(new Bishop(1,5,0)); 
 
-        pieces.add(new Queen1(1,3,0));
-        pieces.add(new King1(1,4,0)); 
+        pieces.add(new Queen(1,3,0));
+        pieces.add(new King(1,4,0)); 
     }
 
     @Override
@@ -128,19 +128,7 @@ public class Ajedrez extends GridGame  {
     }
 
    
-    
-    @Override
-    public Integer currentWinner(List<Movement> current_player_moves){
-        // If the fox reaches the top side of the board, player 0 wins
-        for(Piece pc : pieces){
-            if(pc.player==0 && pc.y==0) return 0;
-        }
-        // Test default win condition
-        Integer result = super.currentWinner(current_player_moves);
-        return result;
-    }
 
-    // Clone the FoxAndHounds so that the clone is a FoxAndHounds instance
     @Override
     public Game cloneGame(){
         GridGame clone = new Ajedrez();

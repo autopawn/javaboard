@@ -10,9 +10,9 @@ import javaboard.GridGame;
 import javaboard.Movement;
 import javaboard.Piece;
 
-public class Peon1 extends Piece {
+public class Pawn extends Piece {
 
-    public Peon1(int player, int x, int y){
+    public Pawn(int player, int x, int y){
         super(player,x,y); // Call parent constructor
     }
 
@@ -24,19 +24,20 @@ public class Peon1 extends Piece {
 
         // Movement list
         List<Movement> moves = new LinkedList<Movement>();
-
-        int[] dys = {1};     // 2 alternatives for delta y
+        
+        int [] dys = {-1,1};
         for(int dy : dys){
             int[] dxs = {0}; // 2 alternatives for delta x
             for(int dx : dxs){
                 int xx = x + dx;
                 int yy = y + dy;
                 // Check inside bounds and that there is not piece
+                    // && grid.pieceAt(xx,yy)==null)
                 if(grid.isInside(xx,yy) ){
                     // Clone the current state to use it in the movement
                     Game cpy = grid.cloneGame();
                     if(cpy.pieceAt(xx,yy) != null){
-                        cpy.pieceAt(xx,yy).player=4; // Change piece player, no one has control of it 
+                        cpy.pieceAt(xx,yy).player=cpy.current_player+2; // Change piece player, no one has control of it 
                         cpy.movePiece(xx,yy,8,7); // moves to captured zone
                         
                     }
@@ -45,6 +46,7 @@ public class Peon1 extends Piece {
                     // Append new movement to the movement list
                     moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
                 }
+
             }
         }
         return moves;
@@ -52,13 +54,20 @@ public class Peon1 extends Piece {
 
     @Override
     public String asciiRepresentation(){
-        return "♟ ";
+        if(player==0 || player==2){
+            return "♙ ";
+        }
+        if(player==1 || player ==3){
+            return "♟ ";
+        }
+        return "??";
     }
+    
 
     // Clone the Fox so that the clone is a Fox instance
     @Override
     public Piece clonePiece(){
-        Peon1 other = new Peon1(player,x,y);
+        Pawn other = new Pawn(player,x,y);
         return other;
     }
 }

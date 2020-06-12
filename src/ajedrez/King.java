@@ -10,9 +10,10 @@ import javaboard.GridGame;
 import javaboard.Movement;
 import javaboard.Piece;
 
-public class Peon0 extends Piece {
+public class King  extends Piece {
 
-    public Peon0(int player, int x, int y){
+    public King
+ (int player, int x, int y){
         super(player,x,y); // Call parent constructor
     }
 
@@ -25,42 +26,58 @@ public class Peon0 extends Piece {
         // Movement list
         List<Movement> moves = new LinkedList<Movement>();
 
-        int[] dys = {-1};     // 2 alternatives for delta y
+        int[] dys = {-1,0,1};     // 2 alternatives for delta y
         for(int dy : dys){
-            int[] dxs = {0}; // 2 alternatives for delta x
+            int[] dxs = {-1,0,1}; // 2 alternatives for delta x
             for(int dx : dxs){
                 int xx = x + dx;
                 int yy = y + dy;
                 // Check inside bounds and that there is not piece
-                    // && grid.pieceAt(xx,yy)==null)
-                if(grid.isInside(xx,yy) ){
+            if(grid.pieceAt(xx,yy)!=null && grid.pieceAt(xx,yy).player == grid.current_player){
+                break;
+            }
+            if(grid.pieceAt(xx,yy)!=null && grid.pieceAt(xx,yy).player != grid.current_player){
+                Game cpy = grid.cloneGame();
+                cpy.pieceAt(xx,yy).player=cpy.current_player+2; // Change piece player, no one has control of it 
+                cpy.movePiece(xx,yy,8,7); // moves to captured zone  
+                cpy.movePiece(x,y,xx,yy);           
+                cpy.current_player = 1 - cpy.current_player;                 
+                moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
+                break;
+            }                
+            if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy)==null){
                     // Clone the current state to use it in the movement
                     Game cpy = grid.cloneGame();
-                    if(cpy.pieceAt(xx,yy) != null){
-                        cpy.pieceAt(xx,yy).player=cpy.current_player+2; // Change piece player, no one has control of it 
-                        cpy.movePiece(xx,yy,8,7); // moves to captured zone
-                        
-                    }
                     cpy.movePiece(x,y,xx,yy);                    // new state moves this piece
                     cpy.current_player = 1 - cpy.current_player; // new state changes player
                     // Append new movement to the movement list
                     moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
-                }
-
             }
         }
-        return moves;
     }
+
+
+
+    return moves;
+}
 
     @Override
     public String asciiRepresentation(){
-        return "♙ ";
-    }
-
+        if(player==0 || player==2){
+            return "♔ ";
+        }
+        if(player==1 || player ==3){
+            return "♚ ";
+        }
+        return "??";
+    }  
+    
     // Clone the Fox so that the clone is a Fox instance
     @Override
     public Piece clonePiece(){
-        Peon0 other = new Peon0(player,x,y);
+     King
+      other = new King
+     (player,x,y);
         return other;
     }
 }
