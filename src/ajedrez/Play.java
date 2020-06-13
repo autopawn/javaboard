@@ -12,9 +12,8 @@ public class Play {
     public static void main(String[] args) {
         Ajedrez game = new Ajedrez();
 
-        Player[] players = {new PlayerHumanTerminal(), new PlayerHumanTerminal()};
+        Player[] players = {new PlayerHumanTerminal(), new PlayerCPURandom()};
         
-        //PlayerCPURandom()
         Executor exec = new Executor();
         exec.runGame(game,players);
 

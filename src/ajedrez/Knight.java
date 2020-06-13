@@ -16,7 +16,13 @@ public class Knight  extends Piece {
         super(player,x,y); // Call parent constructor
     }
 
-    // A Fox can move diagonally forward and backwards
+    
+    /* Knight Rules:
+    A knight moves to the nearest square not on the same rank, file, or diagonal. 
+    (This can be thought of as moving two squares horizontally then one square vertically, 
+    or moving one square horizontally then two squares vertically—i.e. in an "L" pattern.) 
+    The knight is not blocked by other pieces: it jumps to the new location.*/
+
     @Override
     public List<Movement> getMovements(Game state){
         // Implicit cast state to use GridGame methods
@@ -32,23 +38,26 @@ public class Knight  extends Piece {
                 int xx = x + dx;
                 int yy = y + dy;
 
-
-            if(grid.pieceAt(xx,yy)!=null && grid.pieceAt(xx,yy).player != grid.current_player){
-                Game cpy = grid.cloneGame();
-                cpy.pieceAt(xx,yy).player=cpy.current_player+2; // Change piece player, no one has control of it 
-                cpy.movePiece(xx,yy,8,7); // moves to captured zone  
-                cpy.movePiece(x,y,xx,yy);           
-                cpy.current_player = 1 - cpy.current_player;                 
-                moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
-
-            } 
-                // Check inside bounds and that there is not piece
-                if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy)==null){
-                    // Clone the current state to use it in the movement
+                // Capture Option
+                if(grid.pieceAt(xx,yy) != null && grid.isInside(xx,yy) && grid.pieceAt(xx,yy).player != grid.current_player){
                     Game cpy = grid.cloneGame();
-                    cpy.movePiece(x,y,xx,yy);                    // new state moves this piece
-                    cpy.current_player = 1 - cpy.current_player; // new state changes player
-                    // Append new movement to the movement list
+                
+                    // Capture
+                    cpy.pieceAt(xx,yy).player=cpy.current_player + 2;           // new state change piece player, no one has control of it
+                    cpy.movePiece(xx,yy,8,7);                                   // new state moves to captured zone  
+                
+                    // Move Piece
+                    cpy.movePiece(x,y,xx,yy);           
+                    cpy.current_player = 1 - cpy.current_player;                 
+                    moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
+
+                } 
+                
+                // Movement for empty square
+                if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy) == null){
+                    Game cpy = grid.cloneGame();
+                    cpy.movePiece(x,y,xx,yy);                    
+                    cpy.current_player = 1 - cpy.current_player; 
                     moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
                 }
             }
@@ -60,22 +69,26 @@ public class Knight  extends Piece {
             for(int dx : dxs){
                 int xx = x + dx;
                 int yy = y + dy;
-
-            if(grid.pieceAt(xx,yy)!=null && grid.pieceAt(xx,yy).player != grid.current_player){
-                Game cpy = grid.cloneGame();
-                cpy.pieceAt(xx,yy).player=cpy.current_player+2; // Change piece player, no one has control of it 
-                cpy.movePiece(xx,yy,8,7); // moves to captured zone  
-                cpy.movePiece(x,y,xx,yy);           
-                cpy.current_player = 1 - cpy.current_player;                 
-                moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
-            } 
-                // Check inside bounds and that there is not piece
-                if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy)==null){
-                    // Clone the current state to use it in the movement
+            
+                // Capture Option
+                if(grid.pieceAt(xx,yy) != null && grid.isInside(xx,yy) && grid.pieceAt(xx,yy).player != grid.current_player){
                     Game cpy = grid.cloneGame();
-                    cpy.movePiece(x,y,xx,yy);                    // new state moves this piece
-                    cpy.current_player = 1 - cpy.current_player; // new state changes player
-                    // Append new movement to the movement list
+
+                    // Capture
+                    cpy.pieceAt(xx,yy).player = cpy.current_player + 2;     // new state change piece player, no one has control of it 
+                    cpy.movePiece(xx,yy,8,7);                               // new state moves to captured zone  
+                
+                    // Move Piece
+                    cpy.movePiece(x,y,xx,yy);           
+                    cpy.current_player = 1 - cpy.current_player;                 
+                    moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
+                } 
+                
+                // Movement for empty square
+                if(grid.isInside(xx,yy) && grid.pieceAt(xx,yy) == null){
+                    Game cpy = grid.cloneGame();
+                    cpy.movePiece(x,y,xx,yy);                    
+                    cpy.current_player = 1 - cpy.current_player; 
                     moves.add(new Movement(Movement.moveCommand(x,y,xx,yy),cpy));
                 }
             }
@@ -86,16 +99,15 @@ public class Knight  extends Piece {
 
     @Override
     public String asciiRepresentation(){
-        if(player==0 || player==2){
+        if(player==0 || player==3){
             return "♘ ";
         }
-        if(player==1 || player ==3){
+        if(player==1 || player ==2){
             return "♞ ";
         }
         return "??";
     }
 
-    // Clone the Fox so that the clone is a Fox instance
     @Override
     public Piece clonePiece(){
      Knight  other = new Knight (player,x,y);
