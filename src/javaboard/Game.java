@@ -5,11 +5,13 @@ import java.util.List;
 
 // Represents a current game state and its rules
 public abstract class Game {
-
     // List of pieces
+
     public List<Piece> pieces;
     // Which player has the current turn
     public int current_player;
+
+    public abstract String NameGame();
 
     // Retrieves the movements that the current_player can do
     // By default is the union of the piece's movement, discarding invalid states.

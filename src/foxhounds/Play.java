@@ -1,5 +1,6 @@
 package foxhounds;
 
+import javaboard.ExecutorRecorder;
 import javaboard.Executor;
 import javaboard.Player;
 import javaboard.PlayerCPUEval;
@@ -13,7 +14,7 @@ public class Play {
 
         Player[] players = {new PlayerCPURandom(), new PlayerCPUEval()};
 
-        Executor exec = new Executor();
+        ExecutorRecorder exec = new ExecutorRecorder();
         exec.runGame(game,players);
     }
 }

@@ -7,16 +7,11 @@ import java.util.Random;
 public class PlayerCPURandom extends Player {
 
     // Random number generator
-    Random rand;
+    Random rand = new Random();
 
     // Generate using a random seed
     public PlayerCPURandom(){
-        rand = new Random();
-    }
-
-    // Generate using a given seed
-    public PlayerCPURandom(int seed){
-        rand = new Random(seed);
+        this.name = "CPURandom";
     }
 
     // Pick a movement at random
