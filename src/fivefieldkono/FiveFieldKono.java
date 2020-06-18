@@ -132,6 +132,6 @@ public class FiveFieldKono extends GridGame {
 
     @Override
     public String NameGame(){
-        return "FoxHounds";
+        return "FiveFieldKono";
    }
 }
