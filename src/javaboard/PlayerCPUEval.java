@@ -40,5 +40,8 @@ public class PlayerCPUEval extends Player {
     public String victoryMessage(){
         return "Every puzzle has an answer.";
     }
+    public PlayerCPUEval(){
+        this.player_name = "CPUEval";
+    }
 
 }
