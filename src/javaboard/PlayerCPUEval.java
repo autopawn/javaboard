@@ -32,7 +32,7 @@ public class PlayerCPUEval extends Player {
                 best_option = mov;
             }
         }
-
+        
         return best_option;
     }
 

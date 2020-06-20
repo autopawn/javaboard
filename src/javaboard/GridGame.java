@@ -1,5 +1,6 @@
 package javaboard;
 
+
 // Represents a Game within a grid
 public abstract class GridGame extends Game {
 

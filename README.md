@@ -1,4 +1,5 @@
 # Project 2 - Javaboard
+# javaboard
 Java framework for Board Games (exercise).
 
 ## Class Diagrams
