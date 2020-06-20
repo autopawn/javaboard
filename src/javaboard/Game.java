@@ -5,7 +5,7 @@ import java.util.List;
 
 // Represents a current game state and its rules
 public abstract class Game {
-
+    public String game_name;//Definimos la variable game_name en la cual se alamcenara el nombre del juego.
     // List of pieces
     public List<Piece> pieces;
     // Which player has the current turn
