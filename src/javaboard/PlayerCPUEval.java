@@ -18,12 +18,11 @@ public class PlayerCPUEval extends Player {
 
         for(Movement mov : options){
             Evaluable resulting_state = (Evaluable) mov.result;
-
             // Get evaluation of the resulting state
             float eval = resulting_state.defaultEvaluationFunction();
 
             // Opponent's gain is loss
-            if(my_player != mov.result.current_player){
+            if(my_player != mov.result.current_player){ // Si cambia el player entonces se multiplica por -1
                 eval = -resulting_state.defaultEvaluationFunction();
             }
 
@@ -32,7 +31,6 @@ public class PlayerCPUEval extends Player {
                 best_option = mov;
             }
         }
-
         return best_option;
     }
 
