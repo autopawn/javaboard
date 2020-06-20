@@ -15,7 +15,7 @@ public class Executor {
         while(true){
             // Print current state
             System.out.println(state);
-            
+
             // Get movements for current player
             List<Movement> moves = state.getMovements();
 
