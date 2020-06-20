@@ -20,7 +20,6 @@ public class Play {
         System.out.println("Enter the name of the human player: ");
         p = in.nextLine();
         System.out.println("You entered string " + p);
-        in.close();
 
         Player[] players = {new PlayerHumanTerminal(p), new PlayerCPURandom()};
 
