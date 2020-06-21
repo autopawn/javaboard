@@ -130,4 +130,10 @@ public class FiveFieldKono extends GridGame {
         return sbu.toString();
     }
 
+    //FiveFieldKono's name
+    @Override
+    public String game_name(){
+        return "FiveFieldKono";
+    }
+
 }

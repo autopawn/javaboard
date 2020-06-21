@@ -1,0 +1,5 @@
+FoxAndHounds CPURandom CPUEval 0
+FiveFieldKono CPURandom CPURandom 1
+FiveFieldKono CPURandom CPURandom 1
+FoxAndHounds CPURandom CPUEval 0
+FoxAndHounds raul CPUEval 0
