@@ -12,11 +12,13 @@ public class PlayerCPURandom extends Player {
     // Generate using a random seed
     public PlayerCPURandom(){
         rand = new Random();
+        this.name = "CPURandom";
     }
 
     // Generate using a given seed
     public PlayerCPURandom(int seed){
         rand = new Random(seed);
+        this.name = "CPURandomSeed:"+seed;
     }
 
     // Pick a movement at random

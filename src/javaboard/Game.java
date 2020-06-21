@@ -10,7 +10,8 @@ public abstract class Game {
     public List<Piece> pieces;
     // Which player has the current turn
     public int current_player;
-
+    
+    public abstract String Game_Name();
     // Retrieves the movements that the current_player can do
     // By default is the union of the piece's movement, discarding invalid states.
     public List<Movement> getMovements(){
