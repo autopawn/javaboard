@@ -9,3 +9,9 @@ fivefieldkono:
 	javac src/javaboard/*.java
 	javac -classpath src src/fivefieldkono/*.java
 	cd src; jar -cvfm ../fivefieldkono.jar fivefieldkono/Manifest.txt javaboard/*.class fivefieldkono/*.class
+
+simplewars:
+	rm src/*/*.class || true
+	javac src/javaboard/*.java
+	javac -classpath src src/simplewars/*.java
+	cd src; jar -cvfm ../simplewars.jar simplewars/Manifest.txt javaboard/*.class simplewars/*.class
