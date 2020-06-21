@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 // A human player that picks movements from the terminal using their command strings
 public class PlayerHumanTerminal extends Player {
-
+    public PlayerHumanTerminal(String name){
+        this.name = name;
+    }
     @SuppressWarnings("resource")
     @Override
     public Movement pickMovement(Game state, List<Movement> options, List<String> input_commands){

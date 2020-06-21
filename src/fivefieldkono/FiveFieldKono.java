@@ -37,6 +37,11 @@ public class FiveFieldKono extends GridGame {
     }
 
     @Override
+    public String Game_Name(){
+        return "FiveFieldKono";
+    }
+    
+    @Override
     public Integer currentWinner(List<Movement> current_player_moves){
         { // Count base0 positions covered by player 1
             int covered0 = 0;
@@ -129,5 +134,5 @@ public class FiveFieldKono extends GridGame {
         }
         return sbu.toString();
     }
-
+    
 }
