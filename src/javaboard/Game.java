@@ -57,6 +57,10 @@ public abstract class Game {
         pc.y = yy;
     }
 
+    // To define the name of the game
+    // Should ALWAYS be overrided, for any subclass.
+    public abstract String gameName();
+
     // Must retrieve a clone of the current game
     // Should ALWAYS be overrided, for any subclass.
     public abstract Game cloneGame();

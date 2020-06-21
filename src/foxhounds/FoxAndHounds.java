@@ -83,4 +83,9 @@ public class FoxAndHounds extends GridGame implements Evaluable {
         return eval;
     }
 
+    // Giving the game name
+    @Override
+    public String gameName(){
+        return "FoxAndHounds";
+    }
 }
