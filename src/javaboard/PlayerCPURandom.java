@@ -5,12 +5,15 @@ import java.util.Random;
 
 // A general CPU that picks movements at random
 public class PlayerCPURandom extends Player {
+    
 
     // Random number generator
     Random rand;
 
     // Generate using a random seed
     public PlayerCPURandom(){
+        //CPU player name
+        this.Player_Name = "Random-Senpai-Bot";
         rand = new Random();
     }
 
