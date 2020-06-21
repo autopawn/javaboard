@@ -16,25 +16,28 @@ public class Play {
         System.out.println("Player vs CPU    (2)");
         System.out.println("CPU vs CPU       (3)");
         Scanner input = new Scanner(System.in);
-        String userInput = input.nextLine();
-        input.close();
+        String userInput = input.next();
         if(userInput.equals("1")){
+            
             Simplewars game = new Simplewars();
             Player[] players = {new PlayerHumanTerminal(), new PlayerHumanTerminal()};
             Executor exec = new Executor();
             exec.runGame(game, players);
         }
         if(userInput.equals("2")){
+            
             Simplewars game = new Simplewars();
             Player[] players = {new PlayerHumanTerminal(), new PlayerCPUEval()};
             Executor exec = new Executor();
             exec.runGame(game, players);
         }
         if(userInput.equals("3")){
+            
             Simplewars game = new Simplewars();
             Player[] players = {new PlayerCPUEval(), new PlayerCPUEval()};
             Executor exec = new Executor();
             exec.runGame(game, players);
         } 
+        input.close();
     }
 }
