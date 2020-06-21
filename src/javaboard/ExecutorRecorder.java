@@ -23,7 +23,7 @@ public class ExecutorRecorder extends Executor{
                 fWriter.close();
             } 
             catch(IOException ex){
-                System.out.println("Error404: Ha habido un problema en la manipulacion del archivo");
+                System.out.println("Error con el archivo");
             }
         }
         else{
@@ -36,7 +36,7 @@ public class ExecutorRecorder extends Executor{
                 fWriter.close();
             } 
             catch(IOException ex){
-                System.out.println("Error404: Ha habido un problema en la manipulacion del archivo");
+                System.out.println("Error con el archivo");
             }
         }
         
