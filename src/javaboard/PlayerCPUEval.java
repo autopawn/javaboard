@@ -5,6 +5,9 @@ import java.util.List;
 /* A simple general AI that just picks the option that has a better evaluation function. */
 public class PlayerCPUEval extends Player {
 
+    // PlayerCPUEval name
+    private String name;
+
     // Pick a movement using the evaluation function
     @Override
     public Movement pickMovement(Game state, List<Movement> options, List<String> input_commands){
@@ -39,6 +42,12 @@ public class PlayerCPUEval extends Player {
     @Override
     public String victoryMessage(){
         return "Every puzzle has an answer.";
+    }
+
+     // Get the player name
+     public String toString(){
+        this.name="CPUEval";
+        return name;
     }
 
 }

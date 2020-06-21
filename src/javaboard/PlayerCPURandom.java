@@ -6,6 +6,9 @@ import java.util.Random;
 // A general CPU that picks movements at random
 public class PlayerCPURandom extends Player {
 
+    // PlayerCPURandom name
+    private String name;
+
     // Random number generator
     Random rand;
 
@@ -30,6 +33,12 @@ public class PlayerCPURandom extends Player {
     @Override
     public String victoryMessage(){
         return "ALL YOUR BASE ARE BELONG TO US!";
+    }
+
+    // Get the player name
+    public String toString(){
+        this.name="CPURandom";
+        return name;
     }
 
 }
