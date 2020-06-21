@@ -4,6 +4,12 @@ import java.util.List;
 
 /* A simple general AI that just picks the option that has a better evaluation function. */
 public class PlayerCPUEval extends Player {
+    
+    public PlayerCPUEval(){
+        //CPU player name
+        this.Player_Name = "Eval-Senpai-Bot";
+    }
+    
 
     // Pick a movement using the evaluation function
     @Override

@@ -35,6 +35,7 @@ public class FiveFieldKono extends GridGame {
         }
 
     }
+    
 
     @Override
     public Integer currentWinner(List<Movement> current_player_moves){
@@ -128,6 +129,11 @@ public class FiveFieldKono extends GridGame {
             sbu.append("\n");
         }
         return sbu.toString();
+    }
+
+    @Override
+    public String Game_name(){
+         return "FiveFieldKono";
     }
 
 }
