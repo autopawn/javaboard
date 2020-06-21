@@ -6,6 +6,8 @@ import java.util.List;
 generally trying to win the game. */
 public abstract class Player {
 
+    public String name;
+
     // From a list of options pick one, given the current state.
     public abstract Movement pickMovement(Game state, List<Movement> options, List<String> input_commands);
 
