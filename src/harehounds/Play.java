@@ -8,7 +8,7 @@ import javaboard.PlayerHumanTerminal;
 
 public class Play {
 
-    // Play a FoxAndHounds game using the Executor
+    // Play a HareAndHounds game using the Executor
     public static void main(String[] args) {
         HareAndHounds game = new HareAndHounds();
 
