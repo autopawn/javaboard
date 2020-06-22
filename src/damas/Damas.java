@@ -16,6 +16,8 @@ public class Damas extends GridGame{
         size_x = 8;
         size_y = 8;
         pieces = new LinkedList<Piece>();
+        //Distintas piezas del tablero original
+        
         pieces.add(new White(1,3,0));
         pieces.add(new White(1,5,0));
         pieces.add(new White(1,7,0));

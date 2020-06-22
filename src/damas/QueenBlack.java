@@ -19,7 +19,7 @@ public class QueenBlack extends Piece{
 
 
         int[] dss = {1, 2, 3, 4, 5, 6 ,7};
-        //caso1: Superior Derecho
+        //caso1: Superior Derecho, se seguirá la misma logica que las fichas(Black y White)
         for(int ds:dss){
             int xx=x+ds;
             int yy=y-ds;
@@ -28,7 +28,6 @@ public class QueenBlack extends Piece{
             }
             if(grid.pieceAt(xx,yy) != null && grid.pieceAt(xx+1,yy-1) == null && grid.isInside(xx,yy) && grid.isInside(xx+1,yy-1) && grid.pieceAt(xx,yy).player != grid.current_player){
                 Game cpy = grid.cloneGame();
-                cpy.pieceAt(xx,yy).player = cpy.current_player+2;
                 cpy.movePiece(xx,yy,8,7);
                 cpy.movePiece(x,y,xx+1,yy-1);
                 cpy.current_player = 1 - cpy.current_player;  
@@ -51,7 +50,6 @@ public class QueenBlack extends Piece{
             }
             if(grid.pieceAt(xx,yy) != null && grid.pieceAt(xx-1,yy-1) == null && grid.isInside(xx,yy) && grid.isInside(xx-1,yy-1) && grid.pieceAt(xx,yy).player != grid.current_player){
                 Game cpy = grid.cloneGame();
-                cpy.pieceAt(xx,yy).player = cpy.current_player+2;
                 cpy.movePiece(xx,yy,8,7);
                 cpy.movePiece(x,y,xx-1,yy-1);
                 cpy.current_player = 1 - cpy.current_player;
@@ -74,7 +72,6 @@ public class QueenBlack extends Piece{
             }
             if(grid.pieceAt(xx,yy) != null && grid.pieceAt(xx+1,yy+1) == null && grid.isInside(xx,yy) && grid.isInside(xx+1,yy+1) && grid.pieceAt(xx,yy).player != grid.current_player){
                 Game cpy = grid.cloneGame();
-                cpy.pieceAt(xx,yy).player = cpy.current_player+2;
                 cpy.movePiece(xx,yy,8,7);
                 cpy.movePiece(x,y,xx+1,yy+1);
                 cpy.current_player = 1 - cpy.current_player;
@@ -97,7 +94,6 @@ public class QueenBlack extends Piece{
             }
             if(grid.pieceAt(xx,yy) != null && grid.pieceAt(xx-1,yy+1) == null && grid.isInside(xx,yy) && grid.isInside(xx-1,yy+1) && grid.pieceAt(xx,yy).player != grid.current_player){
                 Game cpy = grid.cloneGame();
-                cpy.pieceAt(xx,yy).player = cpy.current_player+2;
                 cpy.movePiece(xx,yy,8,7);
                 cpy.movePiece(x,y,xx-1,yy+1);
                 cpy.current_player = 1 - cpy.current_player;
