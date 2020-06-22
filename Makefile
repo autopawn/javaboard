@@ -1,3 +1,9 @@
+damas:
+	rm src/*/*.class || true
+	javac src/javaboard/*.java
+	javac -classpath src src/damas/*.java
+	cd src; jar -cvfm ../damas.jar damas/Manifest.txt javaboard/*.class damas/*.class
+	
 foxhounds:
 	rm src/*/*.class || true
 	javac src/javaboard/*.java
