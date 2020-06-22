@@ -14,7 +14,10 @@ The first player to move all of their pieces to their opponent's starting positi
 */
 
 public class FiveFieldKono extends GridGame {
-
+    @Override
+    public String Nombre_Juego(){
+        return "FiveFieldKono"; //Se guarda el nombre del juego para FiveFieldKono
+   }
     // Starting positions of player 0
     public static int[][] base0 = {{0,3},{0,4},{1,4},{2,4},{3,4},{4,4},{4,3}};
     // Starting positions of player 1

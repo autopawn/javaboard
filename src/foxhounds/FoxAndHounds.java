@@ -17,6 +17,10 @@ The fox can move diagonally forward and backwards, the hounds can only move forw
 There is no eating.
 */
 public class FoxAndHounds extends GridGame implements Evaluable {
+    @Override
+    public String Nombre_Juego(){
+         return "FoxHounds"; //Se guarda el nombre del juego si es FoxHounds
+    }
 
     public FoxAndHounds(){
         size_x = 8;
