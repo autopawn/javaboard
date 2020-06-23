@@ -1,3 +1,4 @@
+all: foxhounds fivefieldkono pegsolitaire
 foxhounds:
 	rm src/*/*.class || true
 	javac src/javaboard/*.java
@@ -9,3 +10,9 @@ fivefieldkono:
 	javac src/javaboard/*.java
 	javac -classpath src src/fivefieldkono/*.java
 	cd src; jar -cvfm ../fivefieldkono.jar fivefieldkono/Manifest.txt javaboard/*.class fivefieldkono/*.class
+
+pegsolitaire:
+	rm src/*/*.class || true
+	javac src/javaboard/*.java
+	javac -classpath src src/pegsolitaire/*.java
+	cd src; jar -cvfm ../pegsolitaire.jar pegsolitaire/Manifest.txt javaboard/*.class pegsolitaire/*.class
