@@ -12,6 +12,8 @@ public class PlayerCPURandom extends Player {
     // Generate using a random seed
     public PlayerCPURandom(){
         rand = new Random();
+        //Se guarda el nombre del juego si es  igual a CPURandom
+        this.Nombre = "CPURandom"; 
     }
 
     // Generate using a given seed

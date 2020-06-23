@@ -128,6 +128,10 @@ public class FiveFieldKono extends GridGame {
             sbu.append("\n");
         }
         return sbu.toString();
-    }
+    }//Aqui se retorna el nombre del juego para guarda en el txt
+    @Override
+    public String NombreJuego(){
+        return "FiveFieldKono"; 
+   }
 
 }

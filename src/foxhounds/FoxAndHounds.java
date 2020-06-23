@@ -81,6 +81,10 @@ public class FoxAndHounds extends GridGame implements Evaluable {
         if(current_player!=0) eval = -eval;
         // Return eval
         return eval;
+    }//Retorna el nombre del juego para agregarlo al txt
+    @Override
+    public String NombreJuego(){
+         return "FoxHounds"; 
     }
 
 }
