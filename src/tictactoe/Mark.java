@@ -51,5 +51,4 @@ public class Mark extends Piece{
         Mark other = new Mark (player,x,y);
         return other;
     }
-
 }
