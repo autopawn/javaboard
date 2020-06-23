@@ -1,4 +1,5 @@
 package fivefieldkono;
+import java.io.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,14 +14,16 @@ The players take turns moving one of their pieces one square diagonally.
 The first player to move all of their pieces to their opponent's starting positions wins.
 */
 
-public class FiveFieldKono extends GridGame {
+public class FiveFieldKono extends GridGame implements java.io.Serializable{
 
     // Starting positions of player 0
     public static int[][] base0 = {{0,3},{0,4},{1,4},{2,4},{3,4},{4,4},{4,3}};
     // Starting positions of player 1
     public static int[][] base1 = {{0,1},{0,0},{1,0},{2,0},{3,0},{4,0},{4,1}};
 
-    public FiveFieldKono(){
+    public Player[] players;
+
+    public FiveFieldKono(Player jugadores){
         size_x = 5;
         size_y = 5;
         pieces = new LinkedList<Piece>();
@@ -33,6 +36,7 @@ public class FiveFieldKono extends GridGame {
         for(int[] ps : base1){
             pieces.add(new KonoPiece(1,ps[0],ps[1]));
         }
+        players = jugadores;
 
     }
 
@@ -80,6 +84,8 @@ public class FiveFieldKono extends GridGame {
         clone.current_player = current_player;
         clone.size_x = size_x;
         clone.size_y = size_y;
+        //Serializa el objeto de foma repetitiva(por cada clon)
+        Serializable save = new Serializable(game, players)
         return clone;
     }
 

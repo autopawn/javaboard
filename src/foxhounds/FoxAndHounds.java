@@ -16,16 +16,30 @@ to stop him.
 The fox can move diagonally forward and backwards, the hounds can only move forward.
 There is no eating.
 */
-public class FoxAndHounds extends GridGame implements Evaluable {
 
+
+//la clase FoxandHounds es hija de GridGame, por lo que puede heredar 
+//sus metodos, ademas la clase implmenta Evaluate que es una interfaz
+// que permite el uso de defaultEvaluteFuntion()
+public class FoxAndHounds extends GridGame implements Evaluable{
+
+    //Constructor
     public FoxAndHounds(){
+        //tamaño del tablero
         size_x = 8;
         size_y = 8;
+        //se declara la lista de de piezas(se le asigna memoria)
         pieces = new LinkedList<Piece>();
+        //Se usa la clase Hound como tipo
+        //add permite agregar elementos al arraylist
+        //Existen 4 Hounds 1 un Fox
+        //(x,y,z) x->jugador, y,z-> posicion en el tablero(inicial)
+        //AÑADE LAS PIEZAS AL TABLERO
         pieces.add(new Hound(1,1,0));
         pieces.add(new Hound(1,3,0));
         pieces.add(new Hound(1,5,0));
         pieces.add(new Hound(1,7,0));
+        //Se usa la clase Fox como tipo
         pieces.add(new Fox(0,0,7));
     }
 
