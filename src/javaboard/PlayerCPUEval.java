@@ -1,9 +1,13 @@
 package javaboard;
 
 import java.util.List;
-
 /* A simple general AI that just picks the option that has a better evaluation function. */
 public class PlayerCPUEval extends Player {
+
+    public PlayerCPUEval(){
+        //En caso de que el player sea tipo CPUEval, se guarda como tal.
+        this.name_player = "CPUEval";
+    }
 
     // Pick a movement using the evaluation function
     @Override

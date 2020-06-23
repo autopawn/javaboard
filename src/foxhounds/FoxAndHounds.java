@@ -2,7 +2,6 @@ package foxhounds;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import javaboard.Evaluable;
 import javaboard.Game;
 import javaboard.GridGame;
@@ -17,6 +16,12 @@ The fox can move diagonally forward and backwards, the hounds can only move forw
 There is no eating.
 */
 public class FoxAndHounds extends GridGame implements Evaluable {
+
+    //Podemos hacer esto porque FiveFieldKono extiende de GridGame y este a la vez de Game, que tiene definido el metodo abstracto Game_Name().
+    @Override
+    public String Game_Name(){
+        return "FoxHounds";
+    }
 
     public FoxAndHounds(){
         size_x = 8;

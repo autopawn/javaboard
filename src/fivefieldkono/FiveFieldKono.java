@@ -2,7 +2,6 @@ package fivefieldkono;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import javaboard.Game;
 import javaboard.GridGame;
 import javaboard.Movement;
@@ -14,6 +13,13 @@ The first player to move all of their pieces to their opponent's starting positi
 */
 
 public class FiveFieldKono extends GridGame {
+
+    //Podemos hacer esto porque FiveFieldKono extiende de GridGame y este a la vez de Game, que tiene definido el metodo abstracto Game_Name(). Con @Override podemos modificarlo. 
+    @Override
+    public String Game_Name(){
+        return "FiveFieldKono";
+        //Para guardar el nombre de este juego.
+    }    
 
     // Starting positions of player 0
     public static int[][] base0 = {{0,3},{0,4},{1,4},{2,4},{3,4},{4,4},{4,3}};
