@@ -108,4 +108,16 @@ public class PegSolitaire extends GridGame{
     public boolean isInside(int x, int y){
         return((x>=2 && x<=4 && y>=0 && y<=1) || (x>=0 && x<=6 && y>=2 && y<=4) || (x>=2 && x<=4 && y>=5 && y<=6));
     }
+    @Override
+    public Integer currentWinner(List<Movement> current_player_moves){
+        // If there is one piece remaining, the player wins
+        if(pieces.size() == 1){
+            return current_player;
+        // Else if there are no movements left, the player lose
+        }
+        else if(current_player_moves.size() == 0){
+            return 1 - current_player;
+        }
+    return null;
+    }
 }
