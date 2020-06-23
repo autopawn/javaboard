@@ -1,8 +1,9 @@
 package javaboard;
 
+import java.io.*;
 import java.util.List;
 
-public class Executor {
+public class Executor implements java.io.Serializable{
 
     // Runs a game from the given initial state with the given players.
     public int runGame(Game init, Player[] players){

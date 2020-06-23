@@ -8,10 +8,13 @@ import javaboard.GridGame;
 import javaboard.Movement;
 import javaboard.Piece;
 
+
+//la clase es hija de piece, por lo que hereda sus metodos
 public class Hound extends Piece {
 
+    //Constructor
     public Hound(int player, int x, int y){
-        super(player,x,y); // Call parent constructor
+        super(player,x,y); //LLama al constructor padre
     }
 
     // A Hound can move diagonally but only forward
@@ -21,6 +24,7 @@ public class Hound extends Piece {
         GridGame grid = (GridGame) state;
 
         // Movement list
+        //Declaclara la lista de movimientos
         List<Movement> moves = new LinkedList<Movement>();
 
         // Player 0 moves on -Y and player 1 on +Y

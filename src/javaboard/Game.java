@@ -1,19 +1,23 @@
 package javaboard;
 
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 
 // Represents a current game state and its rules
-public abstract class Game {
+public abstract class Game implements java.io.Serializable{
 
-    // List of pieces
+ 
+    //VARIABLE TIPO LIST que es la lista de piezas
     public List<Piece> pieces;
-    // Which player has the current turn
+    //que jugador tiene el turno actual
     public int current_player;
 
     // Retrieves the movements that the current_player can do
     // By default is the union of the piece's movement, discarding invalid states.
+    //RETORNA UNA VARIABLE TIPO MOVEMENT(QUE SON LOS MOVIMIENTOS)
     public List<Movement> getMovements(){
+        //SE LE ASIGNA MEMORIA A LA VARIABLE TIPO LIST
         List<Movement> moves = new LinkedList<Movement>();
 
         for(Piece pc : pieces){

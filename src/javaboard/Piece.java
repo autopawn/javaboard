@@ -1,14 +1,16 @@
 package javaboard;
 
+import java.io.*;
 import java.util.List;
 
-// A piece in the board
-public abstract class Piece {
-    // Piece position
+// piezas en la tabla
+public abstract class Piece implements java.io.Serializable {
+    // posicion de la pieza
     public int x,y;
-    // Current piece player
+    // la pieza que tiene el jugador actual
     public int player;
-
+    //modifica los valores de la superclase
+    //player es el jugador (x,y ) es la posicion el tablero
     public Piece(int player, int x, int y){
         this.player = player;
         this.x = x;

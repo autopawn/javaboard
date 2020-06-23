@@ -21,7 +21,7 @@ public class PlayerCPUEval extends Player {
 
             // Get evaluation of the resulting state
             float eval = resulting_state.defaultEvaluationFunction();
-
+            
             // Opponent's gain is loss
             if(my_player != mov.result.current_player){
                 eval = -resulting_state.defaultEvaluationFunction();

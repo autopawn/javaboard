@@ -1,16 +1,20 @@
 package javaboard;
 
+import java.io.*;
+
+
 // Represents a Game within a grid
 public abstract class GridGame extends Game {
-
+    //es el tamaño del tablero
     public int size_x, size_y;
 
     // Graphical representation of a grid
     @Override
     public String toString(){
+        //permite declarar un string mutable(stringbuilder)
         StringBuilder sbu = new StringBuilder();
 
-        // First row with letters
+        // primera fila de letras
         sbu.append("\n");
         sbu.append("   ");
         for(int x=0;x<size_x;x++){
@@ -28,6 +32,7 @@ public abstract class GridGame extends Game {
 
             // Each cell
             for(int x=0;x<size_x;x++){
+                //para conocer la posicion actual del jugador(creo)
                 Piece pc_in_cell = pieceAt(x,y);
                 if(pc_in_cell!=null){
                     // Draw piece
@@ -40,11 +45,12 @@ public abstract class GridGame extends Game {
                 }
             }
             sbu.append("\n");
-        }
+        }//retorna un string
         return sbu.toString();
     }
 
     // Wheter a given position is inside the board
+    //comprueba que ciertamnete las posicon (x,y) esta detro del tablero. Retora un bool
     public boolean isInside(int x, int y){
         return x>=0 && y>=0 && x<size_x && y<size_y;
     }
