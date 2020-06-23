@@ -5,6 +5,8 @@ import java.util.List;
 
 // Represents a current game state and its rules
 public abstract class Game {
+    //Se define el metodo para el nombre del juego
+    public abstract String NombreJuego(); 
 
     // List of pieces
     public List<Piece> pieces;
