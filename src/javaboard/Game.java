@@ -2,10 +2,11 @@ package javaboard;
 
 import java.util.LinkedList;
 import java.util.List;
-
 // Represents a current game state and its rules
 public abstract class Game {
 
+    // Creamos el metodo abstracto para retornar el nombre más adelante.
+    public abstract String Game_Name();
     // List of pieces
     public List<Piece> pieces;
     // Which player has the current turn

@@ -2,7 +2,6 @@ package javaboard;
 
 import java.util.List;
 import java.util.Random;
-
 // A general CPU that picks movements at random
 public class PlayerCPURandom extends Player {
 
@@ -12,6 +11,8 @@ public class PlayerCPURandom extends Player {
     // Generate using a random seed
     public PlayerCPURandom(){
         rand = new Random();
+        // En caso de que el player sea CPURandom, se guarda como tal.
+        this.name_player = "CPURandom";
     }
 
     // Generate using a given seed
