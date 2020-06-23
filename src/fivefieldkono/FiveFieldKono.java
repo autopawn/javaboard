@@ -2,7 +2,7 @@ package fivefieldkono;
 
 import java.util.LinkedList;
 import java.util.List;
-
+import javaboard.Evaluable;
 import javaboard.Game;
 import javaboard.GridGame;
 import javaboard.Movement;
@@ -13,7 +13,7 @@ The players take turns moving one of their pieces one square diagonally.
 The first player to move all of their pieces to their opponent's starting positions wins.
 */
 
-public class FiveFieldKono extends GridGame {
+public class FiveFieldKono extends GridGame  implements Evaluable {
 
     // Starting positions of player 0
     public static int[][] base0 = {{0,3},{0,4},{1,4},{2,4},{3,4},{4,4},{4,3}};
@@ -128,6 +128,39 @@ public class FiveFieldKono extends GridGame {
             sbu.append("\n");
         }
         return sbu.toString();
+    }
+
+    @Override
+    public float defaultEvaluationFunction(){
+        //How well is the resulting state for the player
+        float eval = 1000;
+        List<Movement> mov=getMovements();
+        for (Piece pce : pieces) {
+            if (pce.player==this.current_player-1) {
+                //Get pieces located in even cells
+                if((pce.x+pce.y)%2==0){
+                    for (int[] pos :base1) {
+                        if((pos[0]+pos[1])%2==0){
+                            //Check the distance between the piece and the base
+                            eval=eval-Math.abs(pce.x-pos[0])+Math.abs(pce.y-pos[1]);
+                        }
+                    }
+                }
+                //Get pieces located in odd cells
+                else{
+                    for (int[] pos :base1) {
+                        if((pos[0]+pos[1])%2!=0){
+                            eval=eval-Math.abs(pce.x-pos[0])+Math.abs(pce.y-pos[1]);
+                        }
+                    }
+                }
+            }
+        }
+        // If our player can make the other player have no movements, he wins.
+        if (mov.isEmpty()) {
+            eval=1000;
+        }
+        return eval;
     }
 
 }
