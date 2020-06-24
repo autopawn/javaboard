@@ -3,6 +3,7 @@ package fivefieldkono;
 import java.util.LinkedList;
 import java.util.List;
 
+import javaboard.Evaluable;
 import javaboard.Game;
 import javaboard.GridGame;
 import javaboard.Movement;
@@ -128,6 +129,44 @@ public class FiveFieldKono extends GridGame {
             sbu.append("\n");
         }
         return sbu.toString();
+    }
+
+    @Override
+    public float defaultEvaluationFunction(){
+        float eval = 0;
+        Piece loser = null;
+        loser.y=0;
+        Piece left=null;
+        Piece rigth=null;
+        /*buscamos la pieza del player1 que está más cerca de llegar al otro lado del tablero
+        ya que es la de mayor peligro para el player0*/
+        for (Piece pc: pieces){
+            if(pc.player==1){
+                if(pc.y!=4 && pc.y>=loser.y){
+                    pc.y=pc.y+1;//se avanza hacia adelante y a la izquieda y dereacha para luego ver si estas estan ocupadas
+                    pc.x=pc.x-1;
+                    left=pc;
+                    pc.x=pc.x+2;
+                    rigth=pc;
+                    if(rigth.player==!0 || left.player!=0) {   // left o rigth si fuesen 0, que son la posicion adelantada no seria un mayor peligro ya que no podria avanzar
+                        loser=pc;
+                    }
+                }
+            }
+        } 
+        eval += loser.y;// No se le resta el "y" total ya que, comienza desde el otro lado
+        //Aplicamos misma evaluación que en FoxHound ya que jugamos al final con una sola pieza
+        for(Piece pc : pieces){
+            if(pc.player==0){
+                if(loser.y>=pc.y){
+                    eval+=0.5;
+                }else{
+                    eval+= 0.05*Math.abs(pc.x-loser.x);
+                }
+            }
+        }
+
+        return eval;   
     }
 
 }
