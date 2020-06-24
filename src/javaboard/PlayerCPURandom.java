@@ -12,6 +12,7 @@ public class PlayerCPURandom extends Player {
     // Generate using a random seed
     public PlayerCPURandom(){
         rand = new Random();
+        this.player_name= "PlayerCPURandom";//siempre tendra este nombre un jugador de este tipo
     }
 
     // Generate using a given seed

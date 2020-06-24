@@ -1,8 +1,11 @@
 package fivefieldkono;
 
-import javaboard.Executor;
+//import javaboard.Executor;
+import javaboard.ExecutorRecorder;
 import javaboard.Player;
+//import javaboard.PlayerCPUEval;
 import javaboard.PlayerCPURandom;
+//import javaboard.PlayerHumanTerminal;
 
 public class Play {
 
@@ -12,7 +15,8 @@ public class Play {
 
         Player[] players = {new PlayerCPURandom(), new PlayerCPURandom()};
 
-        Executor exec = new Executor();
+        //Executor exec = new Executor();//ahora debemos usar el recorder
+        ExecutorRecorder exec = new ExecutorRecorder();
         exec.runGame(game,players);
     }
 }

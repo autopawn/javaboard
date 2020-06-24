@@ -20,6 +20,7 @@ public class FiveFieldKono extends GridGame {
     // Starting positions of player 1
     public static int[][] base1 = {{0,1},{0,0},{1,0},{2,0},{3,0},{4,0},{4,1}};
 
+
     public FiveFieldKono(){
         size_x = 5;
         size_y = 5;
@@ -33,6 +34,11 @@ public class FiveFieldKono extends GridGame {
         for(int[] ps : base1){
             pieces.add(new KonoPiece(1,ps[0],ps[1]));
         }
+
+    }
+    @Override
+    public String GameName(){
+        return "FiveFieldKono";//nombre del juego
 
     }
 

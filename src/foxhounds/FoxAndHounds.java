@@ -28,6 +28,11 @@ public class FoxAndHounds extends GridGame implements Evaluable {
         pieces.add(new Hound(1,7,0));
         pieces.add(new Fox(0,0,7));
     }
+    @Override
+    public String GameName(){
+        return "FoxAndHounds";//nombre del juego
+
+    }
 
     @Override
     public Integer currentWinner(List<Movement> current_player_moves){

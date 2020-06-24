@@ -19,7 +19,9 @@ public abstract class Piece {
     public abstract String asciiRepresentation();
 
     // Get a list of the movements available for a player if this piece is on the board
-    public abstract List<Movement> getMovements(Game state);
+    public abstract List<Movement> getMovements(Game state); 
+    //idea es tomar el estado actual del juuego y nos de todos los posibes movimientos que tiene la pieza
+    //la clase game tiene reglas y estado del juego
 
     // Clone a piece
     // Should ALWAYS be overrided, for any subclass.

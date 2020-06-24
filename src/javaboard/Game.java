@@ -15,6 +15,7 @@ public abstract class Game {
     // By default is the union of the piece's movement, discarding invalid states.
     public List<Movement> getMovements(){
         List<Movement> moves = new LinkedList<Movement>();
+        
 
         for(Piece pc : pieces){
             if(pc.player != current_player) continue;
@@ -60,6 +61,8 @@ public abstract class Game {
     // Must retrieve a clone of the current game
     // Should ALWAYS be overrided, for any subclass.
     public abstract Game cloneGame();
+    public abstract String GameName(); //para saber el nombre del juego
+
 
 
 }
