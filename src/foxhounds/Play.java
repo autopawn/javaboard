@@ -1,6 +1,6 @@
 package foxhounds;
 
-import javaboard.Executor;
+import javaboard.ExecutorRecorder;//se importa ExecutorRecorder para usar su override del metodo rungame de Executor
 import javaboard.Player;
 import javaboard.PlayerCPUEval;
 import javaboard.PlayerCPURandom;
@@ -13,7 +13,7 @@ public class Play {
 
         Player[] players = {new PlayerCPURandom(), new PlayerCPUEval()};
 
-        Executor exec = new Executor();
+        ExecutorRecorder exec = new ExecutorRecorder();//se remplaza el la clase Executor por ExecutorRecorder
         exec.runGame(game,players);
     }
 }

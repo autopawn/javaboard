@@ -25,6 +25,8 @@ public class FiveFieldKono extends GridGame {
         size_y = 5;
         pieces = new LinkedList<Piece>();
 
+        this.nombre="FiveFieldKono";//se le asigna el nombre al atributo nombre del juego.
+
         // Create a player 0 piece on player 0 starting positions
         for(int[] ps : base0){
             pieces.add(new KonoPiece(0,ps[0],ps[1]));

@@ -1,3 +1,4 @@
+all: foxhounds fivefieldkono
 foxhounds:
 	rm src/*/*.class || true
 	javac src/javaboard/*.java
