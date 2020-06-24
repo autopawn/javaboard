@@ -6,10 +6,3 @@ Java framework for Board Games (exercise).
 
 ![fh](classfoxhounds.jpg)
 
-### Five Field Kono
-
-![ffk](classffk.jpg)
-
-### TicTacToe
-
-![ttt](classttt.jpg)
