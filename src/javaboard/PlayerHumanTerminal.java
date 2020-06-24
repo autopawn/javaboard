@@ -44,4 +44,7 @@ public class PlayerHumanTerminal extends Player {
     public String victoryMessage(){
         return "Show me your moves!";
     }
+    public PlayerHumanTerminal(String player_name){//en este caso el nombre puede variar muchas veces
+        this.player_name = player_name;
+    }
 }

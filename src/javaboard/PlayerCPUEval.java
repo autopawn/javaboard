@@ -5,6 +5,11 @@ import java.util.List;
 /* A simple general AI that just picks the option that has a better evaluation function. */
 public class PlayerCPUEval extends Player {
 
+    public PlayerCPUEval(){
+        this.player_name="PlayerCPUEval";//siempre tendra este nombre un jugador de este tipo
+    }
+    
+
     // Pick a movement using the evaluation function
     @Override
     public Movement pickMovement(Game state, List<Movement> options, List<String> input_commands){
