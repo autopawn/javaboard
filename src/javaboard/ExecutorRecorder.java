@@ -12,8 +12,6 @@ public class ExecutorRecorder extends Executor{
         Integer num_player_winner = super.runGame(init, players);
         File file_history = new File("history.txt");
         String line_winner = ""+init.GameName()+" game: Player 0: "+players[0].player_name+" versus Player 1: "+players[1].player_name+"... Player "+num_player_winner+" wins!!!\n";
-        System.out.println(line_winner);
-        System.out.println("NANIII");
         if (file_history.exists()){//si el archivo existe 
             try{//entonces
                 FileWriter file_writer = new FileWriter(file_history, true);
