@@ -27,6 +27,8 @@ public class FoxAndHounds extends GridGame implements Evaluable {
         pieces.add(new Hound(1,5,0));
         pieces.add(new Hound(1,7,0));
         pieces.add(new Fox(0,0,7));
+
+        this.nombre="FoxAndHounds";//se le asigna el nombre al atributo nombre del juego.
     }
 
     @Override

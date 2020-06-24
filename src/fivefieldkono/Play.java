@@ -1,6 +1,6 @@
 package fivefieldkono;
 
-import javaboard.Executor;
+import javaboard.ExecutorRecorder;
 import javaboard.Player;
 import javaboard.PlayerCPURandom;
 
@@ -12,7 +12,7 @@ public class Play {
 
         Player[] players = {new PlayerCPURandom(), new PlayerCPURandom()};
 
-        Executor exec = new Executor();
+        ExecutorRecorder exec = new ExecutorRecorder();
         exec.runGame(game,players);
     }
 }
