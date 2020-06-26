@@ -59,27 +59,85 @@ public class FoxAndHounds extends GridGame implements Evaluable {
     public float defaultEvaluationFunction(){
         // How good is the state for the fox:
         float eval = 0;
-        // Get the fox and how near it is to the other side of the board
-        Piece fox = null;
+
+        /*new array that contents first the piece fox, and after the posible movementes
+        in breath first of the fox*/ 
+        List<Piece> nodes = new LinkedList<Piece>();
+
+        //indicate when the fox comes the goal
+        boolean goal = false; 
+
+        //search for the piece fox to add to the nodes
         for(Piece pc : pieces){
-            if(pc.player==0) fox = pc;
-        }
-        eval += 7-fox.y;
-        // Hound position
-        for(Piece pc : pieces){
-            if(pc.player==1){
-                if(pc.y >= fox.y){
-                    // It is very good for the fox if is has passed by the hounds
-                    eval += 0.5;
-                }else{
-                    // It is better for the fox if the hounds are far in x
-                    eval += 0.05*Math.abs(pc.x-fox.x);
-                }
+            if(pc.player==0) {
+                nodes.add(pc);
             }
         }
-        // Negate eval if the current player is not the fox
-        if(current_player!=0) eval = -eval;
-        // Return eval
+
+        // Breadth First Search handmade
+        while (goal == false){
+
+            //copy the pieces in the order of tree level
+            List<Piece> nodes_copy = new LinkedList<Piece>(nodes);
+            //remove the posible movements of the tree level
+            nodes.clear();
+            //one step is +1 points to eval
+            eval += 1;
+
+            //traverse the tree level
+            for (Piece nod : nodes_copy){
+
+                //Sure that the fox has movemets to the right forward side
+                if (nod.x <= 6){
+                    //List add one posible movement diagonal forward, the backward let the eval worse
+                    nodes.add(new Fox(0,nod.x+1,nod.y-1));
+                
+                    //flaks the hounds nows that this position is unreachable
+                    for(Piece pcr : pieces){
+                        //find a hound!!
+                        if(pcr.player==1){
+                            if((pcr.x == nod.x+1)&&(pcr.y == nod.y-1)){
+                                //if the position is unreachable the node is remove of the list
+                                nodes.remove(nodes.size()-1);
+                            }
+                        }
+                    }
+                }
+
+                //Sure that the fox has movemets to the left forward side
+                if (nod.x >= 1){
+                    nodes.add(new Fox(0,nod.x-1,nod.y-1));
+                
+                    //flaks the hounds nows that this position is unreachable
+                    for(Piece pcl : pieces){
+                        //find a hound!!
+                        if(pcl.player==1){
+                            if((pcl.x == nod.x-1)&&(pcl.y == nod.y-1)){
+                                //if the position is unreachable the node is remove of the list
+                                nodes.remove(nodes.size()-1);
+                            }
+                        }
+                    }
+                }
+
+                //determine if the fox reached the goal
+                for (Piece nod1 : nodes){
+                    if (nod1.y == 0){
+                        goal = true;
+                    }
+                }
+            }
+            ;
+            //if nodes is empty means that the hounds are blocked the way to the goal 
+            if (nodes.isEmpty()){ 
+                eval += 1; //this increases the value of eval since the target is unreachable
+                break;
+            }    
+        }
+
+        // Negate eval if the current player is the fox
+        if(current_player==0) eval = -eval;
+        // Return -eval
         return eval;
     }
 
