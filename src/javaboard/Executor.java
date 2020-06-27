@@ -26,10 +26,18 @@ public class Executor {
             // Current player decides
             Movement pick = players[state.current_player].pickMovement(state,moves,null);
 
+            // set winner to -1 (Nobody) if the human player chose to exit to load/new game menu.
+            if (pick.command.equals("yes")){
+                winner = -1;
+                break;
+            }
+
             // Update current state
             state = pick.result;
         }
 
+        // Close current game with no winner
+        if (winner==-1) return winner;
         // Print player's victory message
         System.out.println("Jugador "+winner+": "+players[winner].victoryMessage());
 

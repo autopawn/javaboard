@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 // Represents a current game state and its rules
-public abstract class Game {
+public abstract class Game implements java.io.Serializable {
 
     // List of pieces
     public List<Piece> pieces;
