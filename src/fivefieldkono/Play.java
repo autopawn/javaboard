@@ -30,7 +30,7 @@ public class Play {
                     if (slot > 0 && slot<10){
                         try {
                             FiveFieldKono load = null;
-                            String selected_slot = "src/fivefieldkono/save/FFKSave"+number+".ser";
+                            String selected_slot = "src/fivefieldkono/FFKSave"+number+".ser";
                             FileInputStream load_file = new FileInputStream(selected_slot);
                             ObjectInputStream load_from = new ObjectInputStream(load_file);
                             load = (FiveFieldKono) load_from.readObject();

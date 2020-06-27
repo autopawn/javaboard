@@ -52,7 +52,7 @@ public class PlayerHumanTerminal extends Player {
                  
                     if (slot > 0 && slot<10){
                         try {
-                            String selected_slot = "src/fivefieldkono/save/FFKSave"+number+".ser";
+                            String selected_slot = "src/fivefieldkono/FFKSave"+number+".ser";
                             Game save_game = state.cloneGame();
                             FileOutputStream save_file = new FileOutputStream(selected_slot);
                             ObjectOutputStream save_to = new ObjectOutputStream(save_file);
