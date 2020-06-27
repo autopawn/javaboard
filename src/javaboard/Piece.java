@@ -3,7 +3,7 @@ package javaboard;
 import java.util.List;
 
 // A piece in the board
-public abstract class Piece {
+public abstract class Piece implements java.io.Serializable {
     // Piece position
     public int x,y;
     // Current piece player
